@@ -33,6 +33,7 @@ export const useMetamask = (): UseMetamask => {
 
   const switchNetwork = async (): Promise<unknown> => {
     const chainId = Web3.utils.toHex(Number(process.env.REACT_APP_CHAIN_ID));
+
     return await ethereum.current?.request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId }],
@@ -56,6 +57,9 @@ export const useMetamask = (): UseMetamask => {
        * 4001: User rejected the request
        *
        */
+
+      console.log('validNetwork', validNetwork);
+      
 
       // TODO: Network errada: solicita a troca (switchEthereumChain)
       // Network certa: conectar (eth_requestAccounts)
